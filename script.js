@@ -6,6 +6,58 @@ const allPlayersTBody = document.querySelector("#allPlayers tbody")
 const searchPlayer = document.getElementById("searchPlayer")
 
 
+// OBJEKT - city - name, country
+let City = function(name,country){
+    this.name = name
+    this.country = country
+}
+
+const country = document.getElementById("country")
+const city = document.getElementById("city")
+const cities = [
+    new City("Stockholm", "Sverige"),
+    new City("Göteborg", "Sverige"),
+    new City("Uppsala", "Sverige"),
+    new City("Tammerfors", "Finland"),
+    new City("Helsingfors", "Finland"),
+]
+
+// skulle kunna loopa igenom och skapa en ny array med UNIKA länder
+//let uniqueCities = []
+// STEFAN FIXAR EN oldschool LOOP
+ const uniqueCities = [...new Set(cities.map(function(item){return item.country}))];
+
+ uniqueCities.forEach(city=>{
+    country.add(new Option(city))
+})
+
+country.addEventListener("change",function(){
+    console.log(country.value)
+    city.innerHTML = "" // rensa alla options
+
+    // let alla = cities.filter(c=>c.country === country.value)
+    
+    // alla.forEach(l=>
+    //     city.add(new Option(l.name))
+    // );
+
+
+    cities.filter(c=>c.country === country.value).forEach(oneCity=>
+        city.add(new Option(oneCity.name))
+    );
+
+})
+
+country.dispatchEvent(new Event('change'))
+
+
+
+
+
+
+
+
+
 
 
 
@@ -159,6 +211,20 @@ MicroModal.init({
     awaitCloseAnimation: false, // [9]
     debugMode: true // [10]
   });
+
+
+
+let form = document.getElementById("form1");
+
+let pristine = new Pristine(form);
+
+form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var valid = pristine.validate();
+    // fetch -> JSON
+    //alert('Form is valid: ' + valid);
+}      )
+
 
 
 // let x = 4
