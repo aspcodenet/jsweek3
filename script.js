@@ -35,12 +35,25 @@ const createTableTdOrTh = function(elementType, txt){
     return element
 }
 
+const playerName = document.getElementById("playerName")
+const jersey = document.getElementById("jersey")
+const position = document.getElementById("position")
+
+
 let clickOnButton=function(event){
     //alert(players[i].name)                        detta funkar fast med sk closures = magi
     let htmlElementet = event.target   // 
-    console.log(event.target)
-    console.log(event.currentTarget)
-    //alert(htmlElementet.dataset.stefansplayerid)
+    // console.log(event.target)
+    // console.log(event.currentTarget)
+    let playerId = parseInt(htmlElementet.dataset.stefansplayerid)
+    //leta fram den player i playersarrayen som matchar id 
+    const player = players.find(p=> p.id === playerId)
+
+    playerName.value = player.name
+    jersey.value = player.jersey
+    position.value = player.position
+    MicroModal.show('modal-1');
+
 }
 
 
@@ -130,6 +143,24 @@ function clickMe(){
     alert('Jepp');
 }
 btnClickMe.addEventListener("click",clickMe) // börjar prenumeera
+
+
+
+
+MicroModal.init({
+    onShow: modal => console.info(`${modal.id} is shown`), // [1]
+    onClose: modal => console.info(`${modal.id} is hidden`), // [2]
+    openTrigger: 'data-custom-open', // [3]
+    closeTrigger: 'data-custom-close', // [4]
+    openClass: 'is-open', // [5]
+    disableScroll: true, // [6]
+    disableFocus: false, // [7]
+    awaitOpenAnimation: false, // [8]
+    awaitCloseAnimation: false, // [9]
+    debugMode: true // [10]
+  });
+
+
 // let x = 4
 // test(1,x)
 // test(1,4)

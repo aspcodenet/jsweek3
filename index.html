@@ -424,34 +424,80 @@
     </footer>
     <!-- ./ Footer -->
 
-    <!-- Modal example -->
-    <dialog id="modal-example">
-      <article>
-        <a
-          href="#close"
-          aria-label="Close"
-          class="close"
-          data-target="modal-example"
-          onclick="toggleModal(event)"
-        ></a>
-        <h3>Confirm your action!</h3>
-        <p>
-          Cras sit amet maximus risus. Pellentesque sodales odio sit amet augue finibus
-          pellentesque. Nullam finibus risus non semper euismod.
-        </p>
-        <footer>
-          <a
-            href="#cancel"
-            role="button"
-            class="secondary"
-            data-target="modal-example"
-            onclick="toggleModal(event)"
-            >Cancel</a><a href="#confirm" role="button" data-target="modal-example" onclick="toggleModal(event)"
-            >Confirm</a>
-        </footer>
-      </article>
-    </dialog>
 
+    <div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
+        <form id="editForm">
+          <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+          <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+            <header class="modal__header">
+              <h2 class="modal__title" id="modal-1-title">
+                Edit
+              </h2>
+            </header>
+            <main class="modal__content" id="modal-1-content">
+                <p>
+                  <label>Name</label>
+                    <input
+                      type="text"
+                      name="playerName"
+                      id="playerName"
+                      placeholder="Player name"
+                      aria-label="Player name"
+                      required
+                    />
+                    <label>Jersey</label>
+                    <input
+                      type="number"
+                      name="jersey"
+                      id="jersey"
+                      placeholder=""
+                      aria-label="Jersey"
+                      required
+                    />
+                    <label>Position</label>
+                    <select
+                      name="position"
+                      id="position"
+                      placeholder=""
+                      aria-label="position"
+                      required
+                    >
+                    <option>Goalie</option>
+                    <option>Defence</option>
+                    <option>Forward</option>
+                  </select>
+  
+        
+              </p>
+            </main>
+            <footer class="modal__footer">
+              <button type="submit">Save</button>
+              <button  data-micromodal-close aria-label="Close this dialog window">Cancel</button>
+            </footer>
+          </div>
+        </div>
+      </form>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    </div>
+  
+  
+
+
+
+
+  <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
   <script src="script.js"></script>
   </body>
 </html>
